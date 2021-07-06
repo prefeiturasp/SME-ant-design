@@ -1,5 +1,5 @@
 {
-  "name": "antd",
+  "name": "antd-sme",
   "version": "4.16.3",
   "description": "An enterprise-class UI design language and React components implementation",
   "title": "Ant Design",
@@ -16,11 +16,11 @@
   ],
   "homepage": "https://ant.design",
   "bugs": {
-    "url": "https://github.com/ant-design/ant-design/issues"
+    "url": "https://github.com/prefeiturasp/SME-ant-design/issues"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/ant-design/ant-design"
+    "url": "https://github.com/prefeiturasp/SME-ant-design"
   },
   "license": "MIT",
   "contributors": [
