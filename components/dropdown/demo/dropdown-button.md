@@ -43,8 +43,30 @@ const menu = (
 
 ReactDOM.render(
   <Space wrap>
-    <Dropdown.Button onClick={handleButtonClick} overlay={menu}>
-      Dropdown
+    <Dropdown.Button
+      overlay={menu}
+      trigger={['click']}
+      type="primary"
+      typeLeftButton="primary-dropdown"
+    >
+      Click
+    </Dropdown.Button>
+    <Dropdown.Button
+      overlay={menu}
+      trigger={['click']}
+      type="default"
+      typeLeftButton="default-dropdown"
+    >
+      Default
+    </Dropdown.Button>
+    <Dropdown.Button
+      overlay={menu}
+      trigger={['click']}
+      type="default"
+      typeLeftButton="danger-dropdown"
+      danger
+    >
+      Danger
     </Dropdown.Button>
     <Dropdown.Button overlay={menu} placement="bottomCenter" icon={<UserOutlined />}>
       Dropdown
