@@ -10,11 +10,11 @@
 @html-selector: html;
 
 // -------- Colors -----------
-@primary-color: @blue-6;
+@primary-color: @purple-sgp;
 @info-color: @primary-color;
 @success-color: @green-6;
-@processing-color: @blue-6;
-@error-color: @red-5;
+@processing-color: @purple-sgp;
+@error-color: @red-6;
 @highlight-color: @red-5;
 @warning-color: @gold-6;
 @normal-color: #d9d9d9;
@@ -61,7 +61,7 @@
 @text-selection-bg: @primary-color;
 @font-variant-base: tabular-nums;
 @font-feature-settings-base: 'tnum';
-@font-size-base: 14px;
+@font-size-base: 16px;
 @font-size-lg: @font-size-base + 2px;
 @font-size-sm: 12px;
 @heading-1-size: ceil(@font-size-base * 2.71);
@@ -71,7 +71,7 @@
 @heading-5-size: ceil(@font-size-base * 1.14);
 // https://github.com/ant-design/ant-design/issues/20210
 @line-height-base: 1.5715;
-@border-radius-base: 2px;
+@border-radius-base: 4px;
 @border-radius-sm: @border-radius-base;
 
 // vertical paddings
@@ -131,6 +131,7 @@
 @ease-in-out-quint: cubic-bezier(0.86, 0, 0.07, 1);
 
 // Border color
+@border-primary-color: @primary-color; // base border outline a component
 @border-color-base: hsv(0, 0, 85%); // base border outline a component
 @border-color-split: hsv(0, 0, 94%); // split border inside a component
 @border-color-inverse: @white;
@@ -179,7 +180,7 @@
 @btn-primary-color: #fff;
 @btn-primary-bg: @primary-color;
 
-@btn-default-color: @text-color;
+@btn-default-color: @primary-color;
 @btn-default-bg: @component-background;
 @btn-default-border: @border-color-base;
 
