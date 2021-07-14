@@ -31,8 +31,7 @@
   text-shadow: @btn-text-shadow;
   box-shadow: @btn-primary-shadow;
 
-  &:hover,
-  &:focus {
+  &:hover {
     & when (@theme = dark) {
       .button-color(
         @color; ~`colorPalette('@{background}', 7) `; ~`colorPalette('@{background}', 7) `
@@ -45,7 +44,8 @@
     }
   }
 
-  &:active {
+  &:active,
+  &:focus {
     & when (@theme = dark) {
       .button-color(
         @color; ~`colorPalette('@{background}', 5) `; ~`colorPalette('@{background}', 5) `
@@ -64,18 +64,18 @@
 .button-variant-other(@color; @background; @border) {
   .button-color(@color; @background; @border);
 
-  &:hover,
-  &:focus {
+  &:hover {
     & when (@theme = dark) {
       .button-color(@primary-5; @background; @primary-5);
     }
     & when not (@theme = dark) {
       .button-color(
-        ~`colorPalette('@{btn-primary-bg}', 5) `; @background;
-          ~`colorPalette('@{btn-primary-bg}', 5) `
+        ~`colorPalette('@{btn-primary-bg}', 6) `; @background;
+          ~`colorPalette('@{btn-primary-bg}', 6) `
       );
     }
   }
+  &:focus,
   &:active {
     & when (@theme = dark) {
       .button-color(@primary-7; @background; @primary-7);
@@ -252,14 +252,31 @@
 .btn-primary() {
   .button-variant-primary(@btn-primary-color; @btn-primary-bg);
 }
+// primary button dropdown style
+.btn-primary-dropdown() {
+  .button-color(@btn-primary-color; @primary-color; @primary-color);
+  pointer-events: none;
+}
+// default button dropdown style
+.btn-default-dropdown() {
+  .button-variant-other(@btn-default-color; @btn-default-bg; @border-primary-color);
+  pointer-events: none;
+}
+// default danger button dropdown style
+.btn-danger-dropdown() {
+  .button-color(@error-color, @btn-default-bg, @error-color);
+  pointer-events: none;
+}
 // default button style
 .btn-default() {
-  .button-variant-other(@btn-default-color; @btn-default-bg; @btn-default-border);
-  &:hover,
+  .button-variant-other(@btn-default-color; @btn-default-bg; @border-primary-color);
+  &:hover {
+    background: @primary-2;
+  }
   &:focus,
   &:active {
     text-decoration: none;
-    background: @btn-default-bg;
+    background: @primary-3;
   }
 }
 // ghost button style
@@ -278,33 +295,27 @@
 // danger default button style
 .btn-danger-default() {
   .button-color(@error-color, @btn-default-bg, @error-color);
-  &:hover,
+  &:hover {
+    & when (@theme = dark) {
+      .button-color(
+        ~`colorPalette('@{error-color}', 7) `; @btn-default-bg; ~`colorPalette('@{error-color}', 7)
+          `
+      );
+    }
+    & when not (@theme = dark) {
+      .button-color(@error-color, @red-2, @error-color);
+    }
+  }
+  &:active,
   &:focus {
     & when (@theme = dark) {
       .button-color(
-        ~`colorPalette('@{error-color}', 7) `; @btn-default-bg; ~`colorPalette('@{error-color}', 7)
-          `
-      );
-    }
-    & when not (@theme = dark) {
-      .button-color(
-        ~`colorPalette('@{error-color}', 5) `; @btn-default-bg; ~`colorPalette('@{error-color}', 5)
-          `
-      );
-    }
-  }
-  &:active {
-    & when (@theme = dark) {
-      .button-color(
         ~`colorPalette('@{error-color}', 5) `; @btn-default-bg; ~`colorPalette('@{error-color}', 5)
           `
       );
     }
     & when not (@theme = dark) {
-      .button-color(
-        ~`colorPalette('@{error-color}', 7) `; @btn-default-bg; ~`colorPalette('@{error-color}', 7)
-          `
-      );
+      .button-color(@error-color, @red-3, @error-color);
     }
   }
   .button-disabled();
@@ -348,18 +359,17 @@
 }
 // text button style
 .btn-text() {
-  .button-variant-other(@text-color, transparent, transparent);
+  .button-variant-other(@primary-color, transparent, transparent);
   box-shadow: none;
-  &:hover,
-  &:focus {
-    color: @text-color;
-    background: @btn-text-hover-bg;
+  &:hover {
+    background: @primary-2;
     border-color: transparent;
   }
 
-  &:active {
-    color: @text-color;
-    background: fadein(@btn-text-hover-bg, 1%);
+  &:active,
+  &:focus {
+    color: @primary-color;
+    background: @primary-3;
     border-color: transparent;
   }
 

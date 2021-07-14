@@ -14,6 +14,7 @@ type DropdownButtonType = 'primary' | 'ghost' | 'dashed';
 
 export interface DropdownButtonProps extends ButtonGroupProps, DropDownProps {
   type?: DropdownButtonType;
+  typeLeftButton?: DropdownButtonType;
   htmlType?: ButtonHTMLType;
   disabled?: boolean;
   onClick?: React.MouseEventHandler<HTMLButtonElement>;
@@ -21,6 +22,7 @@ export interface DropdownButtonProps extends ButtonGroupProps, DropDownProps {
   href?: string;
   children?: React.ReactNode;
   title?: string;
+  danger?: boolean;
   buttonsRender?: (buttons: React.ReactNode[]) => React.ReactNode[];
 }
 
@@ -38,6 +40,7 @@ const DropdownButton: DropdownButtonInterface = props => {
   const {
     prefixCls: customizePrefixCls,
     type,
+    typeLeftButton,
     disabled,
     onClick,
     htmlType,
@@ -56,6 +59,7 @@ const DropdownButton: DropdownButtonInterface = props => {
     buttonsRender,
     mouseEnterDelay,
     mouseLeaveDelay,
+    danger,
     ...restProps
   } = props;
 
@@ -83,18 +87,19 @@ const DropdownButton: DropdownButtonInterface = props => {
 
   const leftButton = (
     <Button
-      type={type}
+      type={typeLeftButton || type}
       disabled={disabled}
       onClick={onClick}
       htmlType={htmlType}
       href={href}
       title={title}
+      danger={danger}
     >
       {children}
     </Button>
   );
 
-  const rightButton = <Button type={type} icon={icon} />;
+  const rightButton = <Button type={type} danger={danger} icon={icon} />;
 
   const [leftButtonToRender, rightButtonToRender] = buttonsRender!([leftButton, rightButton]);
 
