@@ -76,7 +76,16 @@ function spaceChildren(children: React.ReactNode, needInserted: boolean) {
   );
 }
 
-const ButtonTypes = tuple('default', 'primary', 'ghost', 'dashed', 'link', 'text');
+const ButtonTypes = tuple(
+  'default',
+  'primary',
+  'ghost',
+  'dashed',
+  'link',
+  'text',
+  'primary-dropdown',
+  'default-dropdown',
+);
 export type ButtonType = typeof ButtonTypes[number];
 const ButtonShapes = tuple('circle', 'round');
 export type ButtonShape = typeof ButtonShapes[number];
