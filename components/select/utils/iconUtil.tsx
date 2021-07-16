@@ -1,10 +1,9 @@
-import * as React from 'react';
-import DownOutlined from '@ant-design/icons/DownOutlined';
-import LoadingOutlined from '@ant-design/icons/LoadingOutlined';
-import CheckOutlined from '@ant-design/icons/CheckOutlined';
-import CloseOutlined from '@ant-design/icons/CloseOutlined';
 import CloseCircleFilled from '@ant-design/icons/CloseCircleFilled';
-import SearchOutlined from '@ant-design/icons/SearchOutlined';
+import LoadingOutlined from '@ant-design/icons/LoadingOutlined';
+import { faSquare } from '@fortawesome/free-regular-svg-icons';
+import { faCheckSquare, faChevronDown, faSearch, faTimes } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import * as React from 'react';
 
 export default function getIcons({
   suffixIcon,
@@ -39,9 +38,9 @@ export default function getIcons({
     const iconCls = `${prefixCls}-suffix`;
     mergedSuffixIcon = ({ open, showSearch }: { open: boolean; showSearch: boolean }) => {
       if (open && showSearch) {
-        return <SearchOutlined className={iconCls} />;
+        return <FontAwesomeIcon icon={faSearch} className={iconCls} />;
       }
-      return <DownOutlined className={iconCls} />;
+      return <FontAwesomeIcon icon={faChevronDown} className={iconCls} />;
     };
   }
 
@@ -50,7 +49,12 @@ export default function getIcons({
   if (menuItemSelectedIcon !== undefined) {
     mergedItemIcon = menuItemSelectedIcon;
   } else if (multiple) {
-    mergedItemIcon = <CheckOutlined />;
+    mergedItemIcon = ({ isSelected }: { isSelected: boolean }) => {
+      if (isSelected) {
+        return <FontAwesomeIcon className="icon-selected" icon={faCheckSquare} />;
+      }
+      return <FontAwesomeIcon icon={faSquare} />;
+    };
   } else {
     mergedItemIcon = null;
   }
@@ -59,7 +63,7 @@ export default function getIcons({
   if (removeIcon !== undefined) {
     mergedRemoveIcon = removeIcon;
   } else {
-    mergedRemoveIcon = <CloseOutlined />;
+    mergedRemoveIcon = <FontAwesomeIcon icon={faTimes} />;
   }
 
   return {

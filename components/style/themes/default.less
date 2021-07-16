@@ -50,7 +50,7 @@
   'Noto Sans', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol',
   'Noto Color Emoji';
 @code-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, Courier, monospace;
-@text-color: fade(@black, 85%);
+@text-color: #42474a;
 @text-color-secondary: fade(@black, 45%);
 @text-color-inverse: @white;
 @icon-color: inherit;
@@ -100,7 +100,7 @@
 // The background colors for active and hover states for things like
 // list items or table cells.
 @item-active-bg: @primary-1;
-@item-hover-bg: #f5f5f5;
+@item-hover-bg: @primary-2;
 
 // ICONFONT
 @iconfont-css-prefix: anticon;
@@ -132,7 +132,7 @@
 
 // Border color
 @border-primary-color: @primary-color; // base border outline a component
-@border-color-base: hsv(0, 0, 85%); // base border outline a component
+@border-color-base: #6f777c; // base border outline a component
 @border-color-split: hsv(0, 0, 94%); // split border inside a component
 @border-color-inverse: @white;
 @border-width-base: 1px; // width of the border for a component
@@ -145,11 +145,11 @@
 @outline-fade: 20%;
 
 @background-color-light: hsv(0, 0, 98%); // background of header and selected item
-@background-color-base: hsv(0, 0, 96%); // Default grey background color
+@background-color-base: #f3f3f3; // Default grey background color
 
 // Disabled states
-@disabled-color: fade(#000, 25%);
-@disabled-bg: @background-color-base;
+@disabled-color: #bfbfbf;
+@disabled-bg: #fff;
 @disabled-color-dark: fade(#fff, 35%);
 
 // Shadow
@@ -190,7 +190,7 @@
 
 @btn-disable-color: @disabled-color;
 @btn-disable-bg: @disabled-bg;
-@btn-disable-border: @border-color-base;
+@btn-disable-border: @disabled-color;
 
 @btn-default-ghost-color: @component-background;
 @btn-default-ghost-bg: transparent;
@@ -412,7 +412,7 @@
 @input-number-handler-bg: @component-background;
 @input-number-handler-border-color: @border-color-base;
 @input-addon-bg: @background-color-light;
-@input-hover-border-color: @primary-5;
+@input-hover-border-color: @primary-6;
 @input-disabled-bg: @disabled-bg;
 @input-outline-offset: 0 0;
 @input-icon-hover-color: fade(@black, 85%);
@@ -438,7 +438,7 @@
 @select-background: @component-background;
 @select-clear-background: @select-background;
 @select-selection-item-bg: @background-color-base;
-@select-selection-item-border-color: @border-color-split;
+@select-selection-item-border-color: @border-color-base;
 @select-single-item-height-lg: 40px;
 @select-multiple-item-height: @input-height-base - @input-padding-vertical-base * 2; // Normal 24px
 @select-multiple-item-height-lg: 32px;
