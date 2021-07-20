@@ -1,7 +1,7 @@
-import * as React from 'react';
+import { faChevronDown } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import classNames from 'classnames';
-import EllipsisOutlined from '@ant-design/icons/EllipsisOutlined';
-
+import * as React from 'react';
 import Button from '../button';
 import { ButtonHTMLType } from '../button/button';
 import { ButtonGroupProps } from '../button/button-group';
@@ -19,6 +19,7 @@ export interface DropdownButtonProps extends ButtonGroupProps, DropDownProps {
   disabled?: boolean;
   onClick?: React.MouseEventHandler<HTMLButtonElement>;
   icon?: React.ReactNode;
+  iconLeftButton?: React.ReactNode;
   href?: string;
   children?: React.ReactNode;
   title?: string;
@@ -54,7 +55,8 @@ const DropdownButton: DropdownButtonInterface = props => {
     placement,
     getPopupContainer,
     href,
-    icon = <EllipsisOutlined />,
+    icon = <FontAwesomeIcon icon={faChevronDown} />,
+    iconLeftButton,
     title,
     buttonsRender,
     mouseEnterDelay,
@@ -94,6 +96,7 @@ const DropdownButton: DropdownButtonInterface = props => {
       href={href}
       title={title}
       danger={danger}
+      icon={iconLeftButton}
     >
       {children}
     </Button>
