@@ -1,14 +1,14 @@
-import * as React from 'react';
-import classNames from 'classnames';
-import LoadingOutlined from '@ant-design/icons/LoadingOutlined';
-import CloseCircleFilled from '@ant-design/icons/CloseCircleFilled';
 import CheckCircleFilled from '@ant-design/icons/CheckCircleFilled';
 import ExclamationCircleFilled from '@ant-design/icons/ExclamationCircleFilled';
-
+import LoadingOutlined from '@ant-design/icons/LoadingOutlined';
+import { faExclamationCircle } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import classNames from 'classnames';
+import * as React from 'react';
 import Col, { ColProps } from '../grid/col';
-import { ValidateStatus } from './FormItem';
 import { FormContext, FormItemPrefixContext } from './context';
 import ErrorList from './ErrorList';
+import { ValidateStatus } from './FormItem';
 
 interface FormItemInputMiscProps {
   prefixCls: string;
@@ -41,7 +41,7 @@ export interface FormItemInputProps {
 const iconMap: { [key: string]: any } = {
   success: CheckCircleFilled,
   warning: ExclamationCircleFilled,
-  error: CloseCircleFilled,
+  error: () => <FontAwesomeIcon icon={faExclamationCircle} />,
   validating: LoadingOutlined,
 };
 

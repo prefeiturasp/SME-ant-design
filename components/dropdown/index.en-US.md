@@ -49,3 +49,10 @@ You should use [Menu](/components/menu/) as `overlay`. The menu items and divide
 | visible | Whether the dropdown menu is currently visible | boolean | - |  |
 | onClick | The same as [Button](/components/button/#API): called when you click the button on the left | (event) => void | - |  |
 | onVisibleChange | Called when the visible state is changed | (visible: boolean) => void | - |  |
+
+<style>
+  [id^=components-dropdown-demo-doc-dropdown-sme] .ant-btn-group {
+    margin-right: 8px;
+    margin-bottom: 12px;
+  }
+</style>

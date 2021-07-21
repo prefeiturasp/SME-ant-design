@@ -25,6 +25,32 @@
   }
 }
 
+.hover-button-variant-primary(@color; @background) {
+  & when (@theme = dark) {
+    .button-color(
+      @color; ~`colorPalette('@{background}', 7) `; ~`colorPalette('@{background}', 7) `
+    );
+  }
+  & when not (@theme = dark) {
+    .button-color(
+      @color; ~`colorPalette('@{background}', 5) `; ~`colorPalette('@{background}', 5) `
+    );
+  }
+}
+
+.active-focus-button-variant-primary(@color; @background) {
+  & when (@theme = dark) {
+    .button-color(
+      @color; ~`colorPalette('@{background}', 5) `; ~`colorPalette('@{background}', 5) `
+    );
+  }
+  & when not (@theme = dark) {
+    .button-color(
+      @color; ~`colorPalette('@{background}', 7) `; ~`colorPalette('@{background}', 7) `
+    );
+  }
+}
+
 .button-variant-primary(@color; @background) {
   .button-color(@color; @background; @background);
 
@@ -32,30 +58,12 @@
   box-shadow: @btn-primary-shadow;
 
   &:hover {
-    & when (@theme = dark) {
-      .button-color(
-        @color; ~`colorPalette('@{background}', 7) `; ~`colorPalette('@{background}', 7) `
-      );
-    }
-    & when not (@theme = dark) {
-      .button-color(
-        @color; ~`colorPalette('@{background}', 5) `; ~`colorPalette('@{background}', 5) `
-      );
-    }
+    .hover-button-variant-primary(@color, @background);
   }
 
   &:active,
   &:focus {
-    & when (@theme = dark) {
-      .button-color(
-        @color; ~`colorPalette('@{background}', 5) `; ~`colorPalette('@{background}', 5) `
-      );
-    }
-    & when not (@theme = dark) {
-      .button-color(
-        @color; ~`colorPalette('@{background}', 7) `; ~`colorPalette('@{background}', 7) `
-      );
-    }
+    .active-focus-button-variant-primary(@color, @background);
   }
 
   .button-disabled();
@@ -248,6 +256,37 @@
     );
   }
 }
+// primary button style hover - use only on doc
+.hover-button-primary-doc-exemple {
+  .hover-button-variant-primary(@btn-primary-color, @btn-primary-bg);
+  pointer-events: none;
+}
+// primary button style pressed - use only on doc
+.pressed-button-primary-doc-exemple {
+  .active-focus-button-variant-primary(@btn-primary-color, @btn-primary-bg);
+  pointer-events: none;
+}
+// default button style hover - use only on doc
+.hover-button-default-doc-exemple {
+  .hover-btn-default();
+  pointer-events: none;
+}
+// default button style pressed - use only on doc
+.pressed-button-default-doc-exemple {
+  .active-focus-btn-default();
+  pointer-events: none;
+}
+// danger button style hover - use only on doc
+.hover-button-danger-doc-exemple {
+  .hover-danger-default();
+  pointer-events: none;
+}
+// danger button style pressed - use only on doc
+.pressed-button-danger-doc-exemple {
+  .active-focus-danger-default();
+  pointer-events: none;
+}
+
 // primary button style
 .btn-primary() {
   .button-variant-primary(@btn-primary-color; @btn-primary-bg);
@@ -268,15 +307,21 @@
   pointer-events: none;
 }
 // default button style
+.hover-btn-default() {
+  background: @primary-2;
+}
+.active-focus-btn-default() {
+  text-decoration: none;
+  background: @primary-3;
+}
 .btn-default() {
   .button-variant-other(@btn-default-color; @btn-default-bg; @border-primary-color);
   &:hover {
-    background: @primary-2;
+    .hover-btn-default();
   }
   &:focus,
   &:active {
-    text-decoration: none;
-    background: @primary-3;
+    .active-focus-btn-default();
   }
 }
 // ghost button style
@@ -292,31 +337,38 @@
 .btn-danger() {
   .button-variant-primary(@btn-danger-color, @btn-danger-bg);
 }
+
 // danger default button style
+.hover-danger-default() {
+  & when (@theme = dark) {
+    .button-color(
+      ~`colorPalette('@{error-color}', 7) `; @btn-default-bg; ~`colorPalette('@{error-color}', 7)
+        `
+    );
+  }
+  & when not (@theme = dark) {
+    .button-color(@error-color, @red-2, @error-color);
+  }
+}
+.active-focus-danger-default() {
+  & when (@theme = dark) {
+    .button-color(
+      ~`colorPalette('@{error-color}', 5) `; @btn-default-bg; ~`colorPalette('@{error-color}', 5)
+        `
+    );
+  }
+  & when not (@theme = dark) {
+    .button-color(@error-color, @red-3, @error-color);
+  }
+}
 .btn-danger-default() {
   .button-color(@error-color, @btn-default-bg, @error-color);
   &:hover {
-    & when (@theme = dark) {
-      .button-color(
-        ~`colorPalette('@{error-color}', 7) `; @btn-default-bg; ~`colorPalette('@{error-color}', 7)
-          `
-      );
-    }
-    & when not (@theme = dark) {
-      .button-color(@error-color, @red-2, @error-color);
-    }
+    .hover-danger-default();
   }
   &:active,
   &:focus {
-    & when (@theme = dark) {
-      .button-color(
-        ~`colorPalette('@{error-color}', 5) `; @btn-default-bg; ~`colorPalette('@{error-color}', 5)
-          `
-      );
-    }
-    & when not (@theme = dark) {
-      .button-color(@error-color, @red-3, @error-color);
-    }
+    .active-focus-danger-default();
   }
   .button-disabled();
 }

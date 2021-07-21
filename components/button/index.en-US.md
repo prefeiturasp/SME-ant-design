@@ -57,6 +57,10 @@ Following the Ant Design specification, we will add one space between if Button 
 <img src="https://gw.alipayobjects.com/zos/antfincdn/MY%26THAPZrW/38f06cb9-293a-4b42-b183-9f443e79ffea.png" style="box-shadow: none; margin: 0; width: 100px" alt="Button with two Chinese characters" />
 
 <style>
+.ant-col-12 {
+  max-width: 100%;
+  flex: 0 0 100%;
+}
 [id^=components-button-demo-] .ant-btn {
   margin-right: 8px;
   margin-bottom: 12px;
