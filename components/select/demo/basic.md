@@ -14,7 +14,7 @@ title:
 Basic Usage.
 
 ```jsx
-import { Select } from 'antd';
+import { Select, Form } from 'antd';
 
 const { Option } = Select;
 
@@ -41,6 +41,15 @@ ReactDOM.render(
     <Select defaultValue="lucy" style={{ width: 120 }} allowClear>
       <Option value="lucy">Lucy</Option>
     </Select>
+    <Form>
+      <Form.Item hasFeedback validateStatus="error">
+        <Select allowClear>
+          <Option value="1">Option 1</Option>
+          <Option value="2">Option 2</Option>
+          <Option value="3">Option 3</Option>
+        </Select>
+      </Form.Item>
+    </Form>
   </>,
   mountNode,
 );
